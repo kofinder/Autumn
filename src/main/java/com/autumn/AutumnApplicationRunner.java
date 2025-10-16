@@ -20,11 +20,12 @@ public class AutumnApplicationRunner {
             }
         }
 
-        try {
-            mainClass.getDeclaredMethod("main", String[].class)
-                    .invoke(null, (Object) new String[] {});
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to run main method", e);
-        }
+        // try {
+        // mainClass.getDeclaredMethod("main", String[].class)
+        // .invoke(null, (Object) new String[] {});
+
+        // } catch (Exception e) {
+        // throw new RuntimeException("Failed to run main method", e);
+        // }
     }
 }

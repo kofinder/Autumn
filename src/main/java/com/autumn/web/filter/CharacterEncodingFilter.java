@@ -2,7 +2,7 @@ package com.autumn.web.filter;
 
 import com.autumn.web.HttpRequest;
 
-public class OncePerRequestFilter implements Filter {
+public class CharacterEncodingFilter implements Filter {
 
     @Override
     public boolean doFilter(HttpRequest request) {

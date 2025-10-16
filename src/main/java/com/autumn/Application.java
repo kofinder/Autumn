@@ -2,7 +2,6 @@ package com.autumn;
 
 import com.autumn.beans.Autowired;
 import com.autumn.beans.AutumnApplication;
-import com.autumn.beans.Controller;
 import com.autumn.beans.PostConstruct;
 import com.autumn.beans.Repository;
 import com.autumn.beans.Service;
@@ -11,6 +10,8 @@ import java.io.IOException;
 
 import com.autumn.web.MiniDispatcher;
 import com.autumn.web.converter.JsonMessageConverter;
+import com.autumn.web.mapping.GetMapping;
+import com.autumn.web.mapping.RestController;
 
 @Service
 class UserService {
@@ -26,7 +27,7 @@ class UserRepository {
     }
 }
 
-@Controller
+@RestController
 class UserController {
 
     @Autowired
@@ -40,9 +41,12 @@ class UserController {
         System.out.println("UserController initialized");
     }
 
-    public void execute() {
+    @GetMapping("/api/users")
+    public String execute() {
         userService.print();
         userRepository.save();
+
+        return "Hello world";
     }
 }
 
