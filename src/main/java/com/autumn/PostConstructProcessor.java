@@ -1,8 +1,8 @@
-package autumn;
+package com.autumn;
 
 import java.lang.reflect.Method;
 
-import autumn.beans.PostConstruct;
+import com.autumn.beans.PostConstruct;
 
 public class PostConstructProcessor implements BeanProcessor {
 

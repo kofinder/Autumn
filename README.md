@@ -30,3 +30,54 @@ Usage Summary
     Use AutumnApplicationRunner.run(Application.class) to bootstrap.
 
     Optionally add BeanProcessors for custom behavior.
+
+
+
+    ┌─────────────────────────────┐
+    │         HTTP Request        │
+    └─────────────┬──────────────┘
+                │
+                ▼
+    ┌─────────────────────────────┐
+    │        Dispatcher           │
+    │    (Front Controller)       │
+    └─────────────┬──────────────┘
+                │
+    ┌─────────────┴──────────────┐
+    │       Filter Chain         │
+    │ (Chain of Responsibility)  │
+    └─────────────┬──────────────┘
+                │
+                ▼
+    ┌─────────────────────────────┐
+    │       Handler Mapping       │
+    │   (Registry / Strategy)    │
+    └─────────────┬──────────────┘
+                │
+    ┌─────────────┴──────────────┐
+    │          Validator          │
+    │   (Strategy / Visitor)     │
+    └─────────────┬──────────────┘
+                │
+    ┌─────────────┴──────────────┐
+    │    HttpMessageConverter     │
+    │        (Strategy)           │
+    │ Request Body → Java Object │
+    └─────────────┬──────────────┘
+                │
+                ▼
+    ┌─────────────────────────────┐
+    │        Controller           │
+    │  (REST / Business Logic)    │
+    └─────────────┬──────────────┘
+                │
+    ┌─────────────┴──────────────┐
+    │    HttpMessageConverter     │
+    │        (Strategy)           │
+    │ Java Object → Response Body │
+    └─────────────┬──────────────┘
+                │
+                ▼
+    ┌─────────────────────────────┐
+    │       HTTP Response         │
+    └─────────────────────────────┘

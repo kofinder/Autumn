@@ -1,4 +1,4 @@
-package autumn;
+package com.autumn;
 
 import java.io.File;
 import java.net.URL;

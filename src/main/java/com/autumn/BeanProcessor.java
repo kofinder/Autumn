@@ -1,4 +1,4 @@
-package autumn;
+package com.autumn;
 
 public interface BeanProcessor {
 

@@ -1,4 +1,4 @@
-package autumn;
+package com.autumn;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import autumn.beans.Autowired;
-import autumn.beans.Component;
-import autumn.beans.Controller;
-import autumn.beans.PostConstruct;
-import autumn.beans.Repository;
-import autumn.beans.Service;
+import com.autumn.beans.Autowired;
+import com.autumn.beans.Component;
+import com.autumn.beans.Controller;
+import com.autumn.beans.PostConstruct;
+import com.autumn.beans.Repository;
+import com.autumn.beans.Service;
 
 public enum AutumnBeanFactory {
 

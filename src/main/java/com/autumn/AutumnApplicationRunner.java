@@ -1,8 +1,8 @@
-package autumn;
+package com.autumn;
 
 import java.util.Set;
 
-import autumn.beans.AutumnApplication;
+import com.autumn.beans.AutumnApplication;
 
 public class AutumnApplicationRunner {
 
