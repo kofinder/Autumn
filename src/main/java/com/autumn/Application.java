@@ -4,6 +4,7 @@ import com.autumn.beans.Autowired;
 import com.autumn.beans.AutumnApplication;
 import com.autumn.beans.PostConstruct;
 import com.autumn.beans.Repository;
+import com.autumn.beans.RestController;
 import com.autumn.beans.Service;
 
 import java.io.IOException;
@@ -11,7 +12,6 @@ import java.io.IOException;
 import com.autumn.web.MiniDispatcher;
 import com.autumn.web.converter.JsonMessageConverter;
 import com.autumn.web.mapping.GetMapping;
-import com.autumn.web.mapping.RestController;
 
 @Service
 class UserService {

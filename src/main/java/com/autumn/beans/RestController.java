@@ -1,4 +1,4 @@
-package com.autumn.web.mapping;
+package com.autumn.beans;
 
 import java.lang.annotation.*;
 
