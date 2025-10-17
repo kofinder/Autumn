@@ -5,11 +5,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Mutator implements Runnable {
     private final Allocator allocator;
-    private final List<HeapObject> roots; // must be synchronized
+    private final List<HeapObject> roots; // has to be synchronized
 
     public Mutator(Allocator allocator, List<HeapObject> roots) {
         this.allocator = allocator;
-        // wrap roots in a synchronizedList to make add/remove safe
+        // to make add/remove safe
         this.roots = Collections.synchronizedList(roots);
     }
 
@@ -22,7 +22,7 @@ public class Mutator implements Runnable {
             HeapObject obj = allocator.allocate(size, roots);
 
             if (obj != null) {
-                // randomly add references
+                // references
                 synchronized (roots) {
                     if (!roots.isEmpty() && rand.nextBoolean()) {
                         HeapObject target = roots.get(rand.nextInt(roots.size()));
@@ -31,7 +31,7 @@ public class Mutator implements Runnable {
                 }
             }
 
-            // randomly remove some roots
+            // remove some roots
             synchronized (roots) {
                 if (!roots.isEmpty() && rand.nextBoolean()) {
                     roots.remove(rand.nextInt(roots.size()));

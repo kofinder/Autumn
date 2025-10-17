@@ -32,7 +32,6 @@ public class Allocator {
         return obj;
     }
 
-    // === Getters returning snapshots ===
     public List<HeapObject> getEden() {
         return new ArrayList<>(eden);
     }
@@ -45,7 +44,6 @@ public class Allocator {
         return new ArrayList<>(oldGen);
     }
 
-    // === Setters for GC to replace lists ===
     public void setEden(List<HeapObject> list) {
         eden.clear();
         eden.addAll(list);
@@ -61,7 +59,6 @@ public class Allocator {
         oldGen.addAll(list);
     }
 
-    // === Utility Methods ===
     public int getTotalSize(List<HeapObject> list) {
         return list.stream().mapToInt(o -> o.size).sum();
     }
@@ -76,8 +73,10 @@ public class Allocator {
 
     public double getAverageSizeByGeneration(List<HeapObject> list, Generation gen) {
         List<HeapObject> filtered = list.stream().filter(o -> o.generation == gen).toList();
-        if (filtered.isEmpty())
+        if (filtered.isEmpty()) {
             return 0;
+        }
+
         return (double) getTotalSizeByGeneration(filtered, gen) / filtered.size();
     }
 }

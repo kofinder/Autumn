@@ -3,7 +3,7 @@ package com.autumn.gc;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class Main {
+public class FuckGC {
     public static void main(String[] args) throws InterruptedException {
         int edenThreshold = 1024 * 1024; // 1MB for Eden
         int promotionAge = 2; // objects promoted after 2 GC cycles

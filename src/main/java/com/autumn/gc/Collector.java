@@ -74,7 +74,6 @@ public class Collector implements Runnable {
             traverse(ref, visited);
     }
 
-    // === Parallel Young GC ===
     private void parallelYoungGC() {
         List<HeapObject> edenSnapshot = allocator.getEden();
         List<HeapObject> survivor = Collections.synchronizedList(new ArrayList<>());
@@ -126,7 +125,6 @@ public class Collector implements Runnable {
                 allocator.getOldGen().size(), promoted.get(), reclaimed.get());
     }
 
-    // === Parallel Old GC ===
     private void parallelOldGC() {
         List<HeapObject> oldSnapshot = allocator.getOldGen();
         List<HeapObject> compacted = Collections.synchronizedList(new ArrayList<>());
