@@ -12,12 +12,15 @@ public class PackageScanner {
         try {
             String path = packageName.replace('.', '/');
             URL resource = Thread.currentThread().getContextClassLoader().getResource(path);
-            if (resource == null)
+            if (resource == null) {
                 return classes;
 
+            }
+
             File directory = new File(resource.toURI());
-            if (!directory.exists())
+            if (!directory.exists()) {
                 return classes;
+            }
 
             for (File file : directory.listFiles()) {
                 if (file.isFile() && file.getName().endsWith(".class")) {

@@ -129,4 +129,13 @@ public enum AutumnBeanFactory {
 
         return bean;
     }
+
+    public Map<Class<?>, Object> getRegistry() {
+        return registry;
+    }
+
+    public boolean containsBean(Class<?> beanClass) {
+        return registry.containsKey(beanClass);
+    }
+
 }

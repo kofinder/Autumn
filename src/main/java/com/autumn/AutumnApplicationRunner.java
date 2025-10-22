@@ -6,26 +6,26 @@ import com.autumn.beans.AutumnApplication;
 
 public class AutumnApplicationRunner {
 
-    public static void run(Class<?> mainClass) {
+    public static AutumnApplicationContext run(Class<?> mainClass, String... args) {
         if (!mainClass.isAnnotationPresent(AutumnApplication.class)) {
             throw new RuntimeException("Main class must be annotated with @AutumnApplication");
         }
 
-        String basePackage = mainClass.getPackageName();
-        Set<Class<?>> classes = PackageScanner.getClasses(basePackage);
+        AutumnApplicationContext context = new AutumnApplicationContext(mainClass);
 
-        for (Class<?> clazz : classes) {
-            if (AutumnBeanFactory.INSTANCE.isManagedBean(clazz)) {
-                AutumnBeanFactory.INSTANCE.getInstanceOf(clazz);
+        runStartupHooks(context);
+
+        return context;
+    }
+
+    private static void runStartupHooks(AutumnApplicationContext context) {
+        Set<Class<?>> allBeans = context.getAllRegisteredBeans();
+        for (Class<?> beanClass : allBeans) {
+            Object bean = context.getBean(beanClass);
+            if (bean instanceof ApplicationStartup startupBean) {
+                System.out.println("▶ Running startup hook: " + beanClass.getSimpleName());
+                startupBean.run();
             }
         }
-
-        // try {
-        // mainClass.getDeclaredMethod("main", String[].class)
-        // .invoke(null, (Object) new String[] {});
-
-        // } catch (Exception e) {
-        // throw new RuntimeException("Failed to run main method", e);
-        // }
     }
 }
